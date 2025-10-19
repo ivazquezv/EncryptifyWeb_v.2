@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encryptify | Contacto</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
+        </a>
+
+        <h1 class="site-title">Encryptify</h1>
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="icon-hamburger"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
+          </svg>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="menu-links"
+          role="navigation"
+          aria-label="Menú principal"
+        >
+          <a href="overview.html" class="menu-btn"
+            ><i class="fa-solid fa-chart-pie"></i> Visión General</a
+          >
+          <a href="pricing-planes.html" class="menu-btn"
+            ><i class="fa-solid fa-tags"></i> Planes</a
+          >
+          <a href="downloads.html" class="menu-btn"
+            ><i class="fa-solid fa-download"></i> Descargar</a
+          >
+          <a href="developer.html" class="menu-btn"
+            ><i class="fa-solid fa-user-gear"></i> Desarrollador</a
+          >
+          <a href="contact.html" class="menu-btn active"
+            ><i class="fa-solid fa-envelope"></i> Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h2><i class="fa-solid fa-envelope"></i> Contacto</h2>
+        <p>
+          Rellena el siguiente formulario para ponerte en contacto con nosotros.
+          Selecciona el plan que te interesa y te responderemos lo antes
+          posible.
+        </p>
+      </section>
+
+      <section class="contact-form">
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="plan">Plan de interés</label>
+            <select id="plan" name="plan" required>
+              <option value="">-- Selecciona un plan --</option>
+              <option value="gratuito">Gratuito</option>
+              <option value="educativo">Educativo</option>
+              <option value="freelance">Freelance</option>
+              <option value="legal">Legal</option>
+              <option value="forense">Forense</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-download">
+            <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Encryptify. Desarrollado por Iván Vázquez Vidador.</p>
+    </footer>
+  </body>
+</html>

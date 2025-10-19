@@ -1,0 +1,604 @@
+/* -------------------------
+   RESET DE ESTILOS BÁSICO
+-------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* -------------------------
+   ESTILOS GENERALES
+-------------------------- */
+header,
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+}
+
+h1,
+h2,
+h3 {
+  color: #00c4ff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+
+a {
+  color: #00c4ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #009ec2;
+  text-decoration: underline;
+}
+
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* -------------------------
+   MENÚ DE BOTONES
+-------------------------- */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Estilo común para botones y enlaces */
+.menu button,
+.menu a.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #00c4ff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  height: 42px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Hover para ambos */
+.menu button:hover,
+.menu a.menu-btn:hover {
+  background-color: rgba(0, 196, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Iconos dentro de botones/enlaces */
+.menu button i,
+.menu a.menu-btn i {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* -------------------------
+   MENÚ RESPONSIVE Y HAMBURGUESA
+   (mantiene visual de botones)
+-------------------------- */
+.container-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+}
+
+.site-title {
+  flex: 1;
+  text-align: left;
+  font-size: 1.25rem;
+  margin-left: 0.25rem;
+  color: #00c4ff;
+}
+
+/* botón hamburguesa */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.nav-toggle:focus {
+  outline: 2px solid #00c4ff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: transform 0.25s ease, top 0.25s ease, opacity 0.25s ease;
+}
+.hamburger::before {
+  top: -7px;
+}
+.hamburger::after {
+  top: 7px;
+}
+
+/* estado abierto */
+.nav-toggle[aria-expanded="true"] .hamburger {
+  background: transparent;
+}
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* menú desktop */
+.menu-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* -------------------------
+  ADAPTACIONES MOBILE (preservando botones)
+-------------------------- */
+@media (max-width: 880px) {
+  .site-title {
+    font-size: 1rem;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* panel lateral que se desliza */
+  .menu-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(320px, 85%);
+    background: linear-gradient(180deg, #111 0%, #151515 100%);
+    padding: 3.5rem 1.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1);
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
+    z-index: 1200;
+  }
+
+  .menu-links.open {
+    transform: translateX(0);
+  }
+
+  /* Reaplicamos el estilo visual de tus botones pero adaptado a panel:
+     - conservamos color, altura, padding, border-radius y efectos hover */
+  .menu-links .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem; /* igual que en desktop */
+    height: 42px; /* misma altura forzada */
+    line-height: 1;
+    white-space: nowrap;
+    background-color: #00c4ff; /* mismo color de fondo */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  /* Hover y foco coherentes con desktop */
+  .menu-links .menu-btn:hover,
+  .menu-links .menu-btn:focus {
+    background-color: rgba(0, 196, 255, 0.6);
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  /* iconos dentro de los botones */
+  .menu-links .menu-btn i {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  /* si necesitas que el botón activo mantenga contraste */
+  .menu-links .menu-btn.active {
+    box-shadow: 0 0 12px rgba(0, 196, 255, 0.25);
+  }
+
+  .container-header {
+    padding-right: 0.5rem;
+  }
+}
+
+/* mejora visual pequeña en pantallas grandes */
+@media (min-width: 881px) {
+  .site-title {
+    text-align: center;
+    flex: 0;
+    margin-left: 0;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* fuerza ocultar el toggle en desktop por defecto */
+.nav-toggle {
+  display: none !important;
+}
+
+/* Mostrar únicamente en pantallas pequeñas */
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: inline-flex !important;
+  }
+
+  /* aseguro la disposición móvil que ya usas */
+  .menu {
+    justify-content: space-between;
+  }
+}
+
+/* -------------------------
+   SECCIONES
+-------------------------- */
+section {
+  padding: 4rem 2rem;
+  border-bottom: 1px solid #333;
+}
+
+section:nth-child(even) {
+  background-color: #181818;
+  border-radius: 8px;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #00c4ff;
+  color: #121212;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #009ec2;
+  transform: translateY(-2px);
+}
+
+.logo {
+  height: 50px;
+  margin-right: 1rem;
+  vertical-align: middle;
+}
+
+/* -------------------------
+   GALERIA
+-------------------------- */
+#galeria {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.gallery-masonry {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.gallery-masonry img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #00c4ff;
+  box-shadow: 0 0 15px rgba(0, 196, 255, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.gallery-masonry img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 196, 255, 0.9);
+}
+
+/* Responsivo galería */
+@media (max-width: 768px) {
+  .gallery-single {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-single {
+    max-width: 100%;
+  }
+}
+
+/* -------------------------
+   TABLA
+-------------------------- */
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 196, 255, 0.2);
+}
+
+.crypto-table th,
+.crypto-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 196, 255, 0.2);
+  vertical-align: middle;
+}
+
+.crypto-table th {
+  background-color: #00c4ff;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.crypto-table tr:last-child td {
+  border-bottom: none;
+}
+
+.crypto-table tr:hover {
+  background-color: rgba(0, 196, 255, 0.1);
+}
+
+.crypto-table td i {
+  margin-right: 0.5rem;
+  color: #00c4ff;
+}
+
+/* -------------------------
+   PLANES / PRICING
+-------------------------- */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.plan {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(0, 196, 255, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 196, 255, 0.4);
+}
+
+.plan h3 {
+  color: #00c4ff;
+  margin-bottom: 1rem;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.plan ul li {
+  margin: 0.5rem 0;
+}
+
+.plan .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+/* -------------------------
+   DEVELOPER
+-------------------------- */
+.developer-intro {
+  text-align: left;
+}
+
+.developer-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.developer-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00c4ff;
+  box-shadow: 0 0 10px rgba(0, 196, 255, 0.4);
+}
+
+.developer-content p {
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .developer-photo {
+    margin-bottom: 1rem;
+  }
+}
+
+/* -------------------------
+   DOWNLOADS
+-------------------------- */
+.downloads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.download-card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 196, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 196, 255, 0.4);
+}
+
+.download-card h3 {
+  color: #00c4ff;
+  margin-bottom: 0.5rem;
+}
+
+.btn-download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: #00c4ff;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-download:hover {
+  background: #009ec7;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* -------------------------
+   CONTACT
+-------------------------- */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 196, 255, 0.2);
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #00c4ff;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #00c4ff;
+  box-shadow: 0 0 5px rgba(0, 196, 255, 0.5);
+}
+
+/* -------------------------
+   FOOTER
+-------------------------- */
+footer p {
+  font-size: 0.9rem;
+  color: #aaa;
+}

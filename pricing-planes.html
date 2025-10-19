@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encryptify | Planes</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
+        </a>
+
+        <h1 class="site-title">Encryptify</h1>
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="icon-hamburger"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
+          </svg>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="menu-links"
+          role="navigation"
+          aria-label="Menú principal"
+        >
+          <a href="overview.html" class="menu-btn"
+            ><i class="fa-solid fa-chart-pie"></i> Visión General</a
+          >
+          <a href="pricing-planes.html" class="menu-btn"
+            ><i class="fa-solid fa-tags"></i> Planes</a
+          >
+          <a href="downloads.html" class="menu-btn"
+            ><i class="fa-solid fa-download"></i> Descargar</a
+          >
+          <a href="developer.html" class="menu-btn"
+            ><i class="fa-solid fa-user-gear"></i> Desarrollador</a
+          >
+          <a href="contact.html" class="menu-btn active"
+            ><i class="fa-solid fa-envelope"></i> Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h2><i class="fa-solid fa-tags"></i> Nuestros Planes</h2>
+        <p>
+          Encryptify ofrece planes adaptados a diferentes necesidades: desde
+          estudiantes que buscan aprender criptografía, hasta profesionales,
+          juristas y equipos forenses que requieren máxima seguridad y control.
+        </p>
+      </section>
+
+      <section class="pricing">
+        <!-- Plan Educativo -->
+        <div class="plan">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Educativo</h3>
+          <p>Ideal para estudiantes y docentes.</p>
+          <ul>
+            <li>Acceso a algoritmos clásicos y modernos</li>
+            <li>Documentación integrada</li>
+            <li>Interfaz simplificada</li>
+          </ul>
+          <p class="price">Gratis</p>
+        </div>
+
+        <!-- Plan Freelance -->
+        <div class="plan">
+          <h3><i class="fa-solid fa-laptop-code"></i> Freelance</h3>
+          <p>Perfecto para autónomos y desarrolladores independientes.</p>
+          <ul>
+            <li>Gestión segura de proyectos y archivos</li>
+            <li>Compatibilidad multiplataforma</li>
+            <li>Actualizaciones regulares y soporte básico</li>
+          </ul>
+          <p class="price">29€ / año</p>
+        </div>
+
+        <!-- Plan Legal -->
+        <div class="plan">
+          <h3><i class="fa-solid fa-scale-balanced"></i> Legal</h3>
+          <p>Enfocado en despachos y profesionales del derecho.</p>
+          <ul>
+            <li>Cifrado de documentos legales (PDF, DOCX, contratos)</li>
+            <li>Firma digital y validación de integridad</li>
+            <li>Soporte para auditorías y cumplimiento normativo</li>
+          </ul>
+          <p class="price">79€ / año</p>
+        </div>
+
+        <!-- Plan Forense -->
+        <div class="plan">
+          <h3><i class="fa-solid fa-magnifying-glass"></i> Forense</h3>
+          <p>Diseñado para laboratorios y cuerpos de seguridad.</p>
+          <ul>
+            <li>Herramientas de análisis forense</li>
+            <li>Soporte extendido de algoritmos</li>
+            <li>Integración con sistemas de auditoría</li>
+          </ul>
+          <p class="price">99€ / año</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Encryptify. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>

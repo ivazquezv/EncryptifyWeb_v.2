@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encryptify | Visión General</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
+        </a>
+
+        <h1 class="site-title">Encryptify</h1>
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="icon-hamburger"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
+          </svg>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="menu-links"
+          role="navigation"
+          aria-label="Menú principal"
+        >
+          <a href="overview.html" class="menu-btn"
+            ><i class="fa-solid fa-chart-pie"></i> Visión General</a
+          >
+          <a href="pricing-planes.html" class="menu-btn"
+            ><i class="fa-solid fa-tags"></i> Planes</a
+          >
+          <a href="downloads.html" class="menu-btn"
+            ><i class="fa-solid fa-download"></i> Descargar</a
+          >
+          <a href="developer.html" class="menu-btn"
+            ><i class="fa-solid fa-user-gear"></i> Desarrollador</a
+          >
+          <a href="contact.html" class="menu-btn active"
+            ><i class="fa-solid fa-envelope"></i> Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="overview">
+      <section class="intro">
+        <h2><i class="fa-solid fa-shield-halved"></i> ¿Qué es Encryptify?</h2>
+        <p>
+          <strong>Encryptify</strong> es una suite modular de cifrado diseñada
+          para ofrecer seguridad, claridad y facilidad de uso. Su objetivo es
+          acercar la criptografía tanto a profesionales como a estudiantes,
+          permitiendo experimentar con algoritmos clásicos y modernos en una
+          interfaz intuitiva.
+        </p>
+      </section>
+
+      <section class="features">
+        <h2><i class="fa-solid fa-gears"></i> Funcionalidades principales</h2>
+        <ul>
+          <li>🔒 Cifrado y descifrado de archivos con múltiples algoritmos.</li>
+          <li>
+            📂 Detección automática de extensiones y vista previa de resultados.
+          </li>
+          <li>🖥️ Interfaz gráfica clara y accesible, con atajos de teclado.</li>
+          <li>📑 Documentación integrada para cada módulo de cifrado.</li>
+          <li>
+            ⚡ Flujo optimizado para uso educativo, profesional y forense.
+          </li>
+        </ul>
+      </section>
+
+      <section class="algorithms">
+        <h2><i class="fa-solid fa-lock"></i> Tipos de cifrado soportados</h2>
+        <p>
+          Encryptify incluye algoritmos clásicos, modernos y de codificación:
+        </p>
+
+        <table class="crypto-table">
+          <thead>
+            <tr>
+              <th>Categoría</th>
+              <th>Algoritmos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fa-solid fa-font"></i> Sustitución</td>
+              <td>César, Vigenère, Vernam</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-shuffle"></i> Transposición</td>
+              <td>Transposición</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-code"></i> Codificación</td>
+              <td>Base64</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-key"></i> Simétrico</td>
+              <td>AES, Blowfish</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-table-cells"></i> Bloques</td>
+              <td>Algoritmos de bloques personalizados</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-hashtag"></i> Numérico</td>
+              <td>Binario, Decimal, Hexadecimal</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-water"></i> Flujo</td>
+              <td>RC4</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-lock-open"></i> Asimétrico</td>
+              <td>RSA</td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-fingerprint"></i> Hash</td>
+              <td>SHA-256</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="libraries">
+        <h2><i class="fa-solid fa-code"></i> Librerías de Java utilizadas</h2>
+        <p>
+          Para garantizar robustez y compatibilidad, Encryptify se apoya en
+          librerías estándar y de terceros:
+        </p>
+        <ul>
+          <li><code>javax.crypto</code> → cifrado simétrico (AES, DES).</li>
+          <li>
+            <code>java.security</code> → generación de claves, RSA, firmas
+            digitales.
+          </li>
+          <li>
+            <code>java.util.Base64</code> → codificación y decodificación
+            segura.
+          </li>
+          <li><code>javax.swing</code> → interfaz gráfica de usuario.</li>
+          <li>
+            <code>org.bouncycastle</code> (opcional) → soporte extendido de
+            algoritmos.
+          </li>
+        </ul>
+      </section>
+
+      <section class="conclusion">
+        <h2><i class="fa-solid fa-circle-info"></i> Conclusión</h2>
+        <p>
+          Encryptify combina <em>seguridad</em>, <em>usabilidad</em> y
+          <em>educación</em>. Es una herramienta pensada para quienes buscan
+          aprender, aplicar y confiar en la criptografía moderna sin perder de
+          vista la claridad y la experiencia de usuario.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Encryptify. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>

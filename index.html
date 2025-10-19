@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encryptify - Seguridad en tus datos</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
+        </a>
+
+        <h1 class="site-title">Encryptify</h1>
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="icon-hamburger"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
+          </svg>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="menu-links"
+          role="navigation"
+          aria-label="Menú principal"
+        >
+          <a href="overview.html" class="menu-btn"
+            ><i class="fa-solid fa-chart-pie"></i> Visión General</a
+          >
+          <a href="pricing-planes.html" class="menu-btn"
+            ><i class="fa-solid fa-tags"></i> Planes</a
+          >
+          <a href="downloads.html" class="menu-btn"
+            ><i class="fa-solid fa-download"></i> Descargar</a
+          >
+          <a href="developer.html" class="menu-btn"
+            ><i class="fa-solid fa-user-gear"></i> Desarrollador</a
+          >
+          <a href="contact.html" class="menu-btn active"
+            ><i class="fa-solid fa-envelope"></i> Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Sección 1 -->
+      <section id="que-es">
+        <h1>¿Qué es Encryptify?</h1>
+        <p>
+          <strong>Encryptify</strong> es una suite modular de encriptación que
+          protege archivos y datos mediante algoritmos criptográficos clásicos y
+          modernos. Su diseño flexible se adapta a diferentes necesidades a
+          través de tres planes especializados:
+        </p>
+        <ul>
+          <li>
+            <strong>Educativo:</strong> pensado para estudiantes y docentes, con
+            un enfoque didáctico y accesible.
+          </li>
+          <li>
+            <strong>Profesional:</strong> diseñado para empresas y usuarios que
+            requieren seguridad avanzada y soporte continuo.
+          </li>
+          <li>
+            <strong>Forense:</strong> orientado a investigadores y peritos, con
+            herramientas de auditoría, trazabilidad y generación de reportes.
+          </li>
+        </ul>
+        <p>
+          De esta forma, Encryptify combina rigor técnico con una experiencia
+          clara y modular, ofreciendo soluciones a medida para cada perfil de
+          usuario.
+        </p>
+      </section>
+
+      <!-- Sección 2 -->
+      <section id="publico">
+        <h2>¿A quién va dirigido?</h2>
+        <p>
+          Está pensado para estudiantes, docentes, investigadores y
+          profesionales que buscan comprender y aplicar técnicas de encriptación
+          de manera práctica y clara.
+        </p>
+      </section>
+
+      <!-- Sección: Galería -->
+      <section id="galeria">
+        <h2>Galería</h2>
+        <div class="gallery-masonry">
+          <figure>
+            <img src="assets/img/slide1.jpg" alt="Imagen 1 de Encryptify" />
+            <figcaption>Menú Principaal de Encryptify</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img src="assets/img/slide2.jpg" alt="Imagen 2 de Encryptify" />
+            <figcaption>Ventana del sistema de encriptado César</figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img src="assets/img/slide3.jpg" alt="Imagen 3 de Encryptify" />
+            <figcaption>
+              Manual de usuario de cada sistema tipo de encriptado,
+              funcionamiento y descripicón de uso.
+            </figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img src="assets/img/slide4.jpg" alt="Imagen 4 de Encryptify" />
+            <figcaption>
+              Ventana del Generador de claves (3 niveles de seguridad)
+            </figcaption>
+          </figure>
+          <br />
+          <figure>
+            <img src="assets/img/slide5.jpg" alt="Imagen 5 de Encryptify" />
+            <figcaption>
+              Encryptify, Educativo, Forense y Profesional.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Sección 3 -->
+      <section id="descarga">
+        <h2>Descargar versión educativa</h2>
+        <p>Puedes obtener la versión educativa de Encryptify aquí:</p>
+        <a href="downloads.html" class="btn">👉 Descargar ahora</a>
+      </section>
+
+      <!-- Sección 4 -->
+      <section id="desarrollador">
+        <h2>Sobre el desarrollador</h2>
+        <p>
+          <strong>Encryptify</strong> ha sido creado por
+          <strong>Iván Vázquez Vidador</strong>, programador y arquitecto
+          digital con amplia experiencia en el desarrollo de software y diseño
+          web. Es fundador de
+          <a href="https://draftdesignweb.com" target="_blank"
+            >DRAFT Design Web</a
+          >, donde combina creatividad y tecnología para ofrecer soluciones
+          innovadoras.
+        </p>
+        <p>
+          Especialista en <strong>Java</strong>, interfaces gráficas con Swing,
+          desarrollo web (HTML, CSS, JavaScript) y seguridad informática, Iván
+          también destaca por su capacidad para crear documentación clara y
+          educativa. Ha trabajado en proyectos que abarcan desde sistemas de
+          encriptación y auditorías de seguridad hasta dashboards, inventarios y
+          aplicaciones empresariales.
+        </p>
+        <p>
+          Además de su faceta técnica, mantiene un fuerte interés en la
+          <strong>inteligencia artificial</strong> y en tecnologías emergentes,
+          siempre con el objetivo de acercar la innovación y la seguridad
+          digital a estudiantes, profesionales y organizaciones.
+        </p>
+        <p>
+          Puedes conocer más sobre su trabajo en su portafolio personal:
+          <a href="https://ivanvazquezv.com" target="_blank">ivanvazquezv.com</a
+          >.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="current-year"></span> Encryptify - Desarrollado por Iván
+        Vázquez
+      </p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
