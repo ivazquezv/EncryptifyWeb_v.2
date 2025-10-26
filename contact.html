@@ -9,6 +9,35 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function () {
+        emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de EmailJS
+      })();
+    </script>
+    <style>
+      .required {
+        color: red;
+        font-weight: bold;
+        margin-left: 4px;
+      }
+      #status {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      #status.error {
+        color: red;
+      }
+      #status.success {
+        color: green;
+      }
+      .note {
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 8px;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -16,36 +45,8 @@
         <a href="index.html" class="brand">
           <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
         </a>
-
         <h1 class="site-title">Encryptify</h1>
-
-        <button
-          id="nav-toggle"
-          class="nav-toggle"
-          aria-controls="primary-nav"
-          aria-expanded="false"
-          aria-label="Abrir menú"
-        >
-          <svg
-            class="icon-hamburger"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
-            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
-            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
-          </svg>
-        </button>
-
-        <nav
-          id="primary-nav"
-          class="menu-links"
-          role="navigation"
-          aria-label="Menú principal"
-        >
+        <nav id="primary-nav" class="menu-links" role="navigation">
           <a href="overview.html" class="menu-btn"
             ><i class="fa-solid fa-chart-pie"></i> Visión General</a
           >
@@ -76,19 +77,25 @@
       </section>
 
       <section class="contact-form">
-        <form action="#" method="post">
+        <form id="contact-form">
           <div class="form-group">
-            <label for="name">Nombre completo</label>
+            <label for="name"
+              >Nombre completo <span class="required">*</span></label
+            >
             <input type="text" id="name" name="name" required />
           </div>
 
           <div class="form-group">
-            <label for="email">Correo electrónico</label>
+            <label for="email"
+              >Correo electrónico <span class="required">*</span></label
+            >
             <input type="email" id="email" name="email" required />
           </div>
 
           <div class="form-group">
-            <label for="plan">Plan de interés</label>
+            <label for="plan"
+              >Plan de interés <span class="required">*</span></label
+            >
             <select id="plan" name="plan" required>
               <option value="">-- Selecciona un plan --</option>
               <option value="gratuito">Gratuito</option>
@@ -100,20 +107,69 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Mensaje</label>
+            <label for="message">Mensaje <span class="required">*</span></label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
 
           <button type="submit" class="btn-download">
             <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
           </button>
+          <p class="note">
+            Los campos marcados con <span class="required">*</span> son
+            obligatorios.
+          </p>
         </form>
+        <p id="status"></p>
       </section>
     </main>
 
     <footer>
       <p>&copy; 2025 Encryptify. Desarrollado por Iván Vázquez Vidador.</p>
     </footer>
-    <script src="assets/js/main.js"></script>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const plan = document.getElementById("plan").value.trim();
+          const message = document.getElementById("message").value.trim();
+          const status = document.getElementById("status");
+
+          // Validación manual
+          if (!name || !email || !plan || !message) {
+            status.className = "error";
+            status.innerHTML =
+              "⚠️ Por favor, completa todos los campos obligatorios.";
+            return;
+          }
+
+          // Envío con EmailJS
+          emailjs
+            .send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+              name: name,
+              email: email,
+              plan: plan,
+              message: message,
+            })
+            .then(
+              function () {
+                status.className = "success";
+                status.innerHTML =
+                  "✅ Tu mensaje ha sido enviado correctamente.";
+                document.getElementById("contact-form").reset();
+              },
+              function (error) {
+                status.className = "error";
+                status.innerHTML =
+                  "❌ Error al enviar el mensaje. Intenta más tarde.";
+                console.error("Error:", error);
+              }
+            );
+        });
+    </script>
   </body>
 </html>
