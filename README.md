@@ -4,7 +4,7 @@
 
 # Encryptify — Sitio informativo y descarga (versión educativa)
 
-Encryptify es una página informativa que permite descargar la aplicación de escritorio gratuita en su edición educativa. La web describe los planes disponibles (Educativo, Freelance, Profesional y Forense), detalla al desarrollador y explica los tipos de cifrado incluidos. El sitio es únicamente informativo y de contacto; la aplicación real se descarga desde la sección de descargas en https://encryptifydata.netlify.app/.
+Encryptify es una página informativa que permite descargar la aplicación de escritorio gratuita en su edición educativa. La web describe los planes disponibles (Educativo, Freelance, Profesional y Forense), detalla al desarrollador y explica los tipos de cifrado incluidos. El sitio es únicamente informativo y de contacto; la aplicación real se descarga desde la sección de descargas en https://encryptifydata.com/.
 
 ### Características principales
 - Descarga gratuita del instalador de la versión educativa.  
@@ -25,7 +25,7 @@ Encryptify es una página informativa que permite descargar la aplicación de es
 - LICENSE — licencia del proyecto
 
 ### Cómo descargar e instalar (versión educativa)
-1. Visita la sección "Descargas": https://encryptifydata.netlify.app/downloads  
+1. Visita la sección "Descargas": https://encryptifydata.com/downloads  
 2. Descarga el instalador correspondiente a tu sistema operativo.  
 3. Ejecuta el instalador localmente y sigue las instrucciones del asistente.  
 4. Para soporte o dudas, usa la sección "Contacto" de la web.
@@ -74,7 +74,7 @@ Encryptify is an informational website that provides the free desktop applicatio
 - LICENSE — project license
 
 ### How to download and install (educational edition)
-1. Go to the "Downloads" section: https://encryptifydata.netlify.app/downloads  
+1. Go to the "Downloads" section: https://encryptifydata.com/downloads  
 2. Download the installer for your operating system.  
 3. Run the installer locally and follow the installation wizard.  
 4. For support or questions, use the site's Contact section.
