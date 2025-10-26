@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
       (function () {
-        emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de EmailJS
+        emailjs.init("P-MYFtgGFfMP9k_Us"); // Reemplaza con tu User ID de EmailJS
       })();
     </script>
     <style>
@@ -139,34 +139,53 @@
           const message = document.getElementById("message").value.trim();
           const status = document.getElementById("status");
 
-          // Validación manual
+          console.clear();
+          console.log("📩 Iniciando envío de formulario...");
+          console.log("Valores capturados:", { name, email, plan, message });
+
           if (!name || !email || !plan || !message) {
             status.className = "error";
             status.innerHTML =
               "⚠️ Por favor, completa todos los campos obligatorios.";
+            console.warn("❌ Validación fallida: faltan campos obligatorios");
+            return;
+          }
+
+          // Verificar inicialización
+          try {
+            console.log("🔑 Verificando inicialización de EmailJS...");
+            if (!emailjs) {
+              throw new Error("EmailJS no está cargado");
+            }
+          } catch (err) {
+            console.error("❌ Error: EmailJS no está disponible", err);
+            status.className = "error";
+            status.innerHTML = "❌ Error interno: EmailJS no cargado.";
             return;
           }
 
           // Envío con EmailJS
+          console.log("🚀 Enviando con EmailJS...");
           emailjs
-            .send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+            .send("service_20e3u9c", "template_0xkivdo", {
               name: name,
               email: email,
               plan: plan,
               message: message,
             })
             .then(
-              function () {
+              function (response) {
+                console.log("✅ Respuesta de EmailJS:", response);
                 status.className = "success";
                 status.innerHTML =
                   "✅ Tu mensaje ha sido enviado correctamente.";
                 document.getElementById("contact-form").reset();
               },
               function (error) {
+                console.error("❌ Error al enviar con EmailJS:", error);
                 status.className = "error";
                 status.innerHTML =
-                  "❌ Error al enviar el mensaje. Intenta más tarde.";
-                console.error("Error:", error);
+                  "❌ Error al enviar el mensaje. Revisa la consola.";
               }
             );
         });
