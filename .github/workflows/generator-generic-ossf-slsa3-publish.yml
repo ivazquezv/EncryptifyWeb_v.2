@@ -1,0 +1,59 @@
+# ========================================================
+# EncryptifyWeb_v.2 - SLSA Provenance Workflow
+#
+# ⚠️ Nota: Este workflow usa acciones no certificadas por GitHub.
+# Están provistas por terceros y se rigen por sus propios
+# términos de servicio, políticas de privacidad y soporte.
+#
+# Este flujo genera un archivo de "provenance" SLSA nivel 3
+# para los artefactos de EncryptifyWeb_v.2.
+# Más info: https://slsa.dev
+# ========================================================
+
+name: SLSA provenance for EncryptifyWeb_v.2
+
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      digests: ${{ steps.hash.outputs.digests }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ========================================================
+      # Step 1: Construir artefactos de EncryptifyWeb_v.2
+      # ========================================================
+      - name: Build Encryptify artifacts
+        run: |
+          # Aquí defines qué quieres empaquetar como artefacto.
+          # Ejemplo: comprimir el sitio web estático.
+          mkdir build
+          cp -r index.html assets docs favicon.ico build/
+          tar -czf encryptifyweb-v2.tar.gz build
+
+      # ========================================================
+      # Step 2: Generar subjects para la provenance
+      # ========================================================
+      - name: Generate subject for provenance
+        id: hash
+        run: |
+          set -euo pipefail
+          files=$(ls *.tar.gz || true)
+          echo "hashes=$(sha256sum $files | base64 -w0)" >> "${GITHUB_OUTPUT}"
+
+  provenance:
+    needs: [build]
+    permissions:
+      actions: read   # Para leer el workflow.
+      id-token: write # Para firmar la provenance.
+      contents: write # Para añadir assets a un release.
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.4.0
+    with:
+      base64-subjects: "${{ needs.build.outputs.digests }}"
+      upload-assets: true
