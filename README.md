@@ -53,7 +53,7 @@ Revisa el archivo LICENSE para los términos completos (por ejemplo MIT).
 
 # Encryptify — Informational site and download (educational edition)
 
-Encryptify is an informational website that provides the free desktop application download in its educational edition. The site details available plans (Educational, Freelance, Professional and Forensic), describes the developer and explains the types of encryption included. The website is for information and contact only; the actual desktop application is available from the downloads section at https://encryptifydata.netlify.app/.
+Encryptify is an informational website that provides the free desktop application download in its educational edition. The site details available plans (Educational, Freelance, Professional and Forensic), describes the developer and explains the types of encryption included. The website is for information and contact only; the actual desktop application is available from the downloads section at https://encryptifydata.com/.
 
 ### Key features
 - Free download of the educational edition installer.  
