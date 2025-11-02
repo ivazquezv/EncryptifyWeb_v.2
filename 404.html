@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error 404 – Encryptify</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .btn {
+        text-decoration: none !important;
+      }
+
+      .btn:hover {
+        color: #fff !important;
+        text-decoration: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
+        </a>
+        <h1 class="site-title">Encryptify</h1>
+        <nav id="primary-nav" class="menu-links" role="navigation">
+          <a href="overview.html" class="menu-btn"
+            ><i class="fa-solid fa-chart-pie"></i> Visión General</a
+          >
+          <a href="pricing-planes.html" class="menu-btn"
+            ><i class="fa-solid fa-tags"></i> Planes</a
+          >
+          <a href="downloads.html" class="menu-btn"
+            ><i class="fa-solid fa-download"></i> Descargar</a
+          >
+          <a href="developer.html" class="menu-btn"
+            ><i class="fa-solid fa-user-gear"></i> Desarrollador</a
+          >
+          <a href="contact.html" class="menu-btn"
+            ><i class="fa-solid fa-envelope"></i> Contacto</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="error-404" style="text-align: center; padding: 60px 20px">
+        <h1 style="font-size: 3em; color: #c0392b">
+          <i class="fa-solid fa-lock"></i> Página no desencriptada
+        </h1>
+        <p style="font-size: 1.2em; color: #555">
+          El recurso solicitado está cifrado, ha sido movido o no existe en esta
+          clave de acceso.
+        </p>
+        <p>
+          Puedes volver al
+          <a href="index.html" class="btn"
+            ><i class="fa-solid fa-house"></i> Inicio</a
+          >
+          para reiniciar la sesión segura, o explorar otras rutas verificadas en
+          el menú principal.
+        </p>
+        <p style="margin-top: 30px; font-style: italic; color: #888">
+          Código de error: <strong>404 – Resource Not Found</strong><br />
+          Estado: <strong>Checksum inválido</strong>
+        </p>
+        <img
+          src="assets/img/logo-64.png"
+          alt="Sistema de encriptado"
+          style="max-width: 400px; margin-top: 30px"
+        />
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="current-year"></span> Encryptify - Desarrollado por Iván
+        Vázquez
+      </p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
