@@ -45,8 +45,36 @@
         <a href="index.html" class="brand">
           <img src="assets/img/logo.png" alt="Logo Encryptify" class="logo" />
         </a>
+
         <h1 class="site-title">Encryptify</h1>
-        <nav id="primary-nav" class="menu-links" role="navigation">
+
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <svg
+            class="icon-hamburger"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect y="5" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="11" width="24" height="2" rx="1" fill="#fff" />
+            <rect y="17" width="24" height="2" rx="1" fill="#fff" />
+          </svg>
+        </button>
+
+        <nav
+          id="primary-nav"
+          class="menu-links"
+          role="navigation"
+          aria-label="Menú principal"
+        >
           <a href="overview.html" class="menu-btn"
             ><i class="fa-solid fa-chart-pie"></i> Visión General</a
           >
@@ -127,68 +155,88 @@
       <p>&copy; 2025 Encryptify. Desarrollado por Iván Vázquez Vidador.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
-      document
-        .getElementById("contact-form")
-        .addEventListener("submit", function (e) {
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("status");
+
+        if (!form || !status) {
+          console.error("❌ Elementos #contact-form o #status no encontrados.");
+          return;
+        }
+
+        // Inicializar EmailJS si no se ha hecho
+        if (!emailjs._init) {
+          console.log("🔧 Inicializando EmailJS...");
+          emailjs.init("YOUR_PUBLIC_KEY"); // Reemplaza con tu clave pública
+        }
+
+        form.addEventListener("submit", function (e) {
           e.preventDefault();
 
-          const name = document.getElementById("name").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const plan = document.getElementById("plan").value.trim();
-          const message = document.getElementById("message").value.trim();
-          const status = document.getElementById("status");
+          const name = document.getElementById("name")?.value.trim();
+          const email = document.getElementById("email")?.value.trim();
+          const plan = document.getElementById("plan")?.value.trim();
+          const message = document.getElementById("message")?.value.trim();
 
           console.clear();
-          console.log("📩 Iniciando envío de formulario...");
-          console.log("Valores capturados:", { name, email, plan, message });
+          console.log("📩 Enviando formulario...");
+          console.log("Datos:", { name, email, plan, message });
 
+          // Validación básica
           if (!name || !email || !plan || !message) {
             status.className = "error";
-            status.innerHTML =
-              "⚠️ Por favor, completa todos los campos obligatorios.";
-            console.warn("❌ Validación fallida: faltan campos obligatorios");
+            status.innerHTML = "⚠️ Completa todos los campos obligatorios.";
+            console.warn("❌ Validación fallida: campos vacíos");
             return;
           }
 
-          // Verificar inicialización
-          try {
-            console.log("🔑 Verificando inicialización de EmailJS...");
-            if (!emailjs) {
-              throw new Error("EmailJS no está cargado");
-            }
-          } catch (err) {
-            console.error("❌ Error: EmailJS no está disponible", err);
+          // Validación de email
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
             status.className = "error";
-            status.innerHTML = "❌ Error interno: EmailJS no cargado.";
+            status.innerHTML = "⚠️ El correo electrónico no es válido.";
+            console.warn("❌ Email inválido");
             return;
           }
 
-          // Envío con EmailJS
-          console.log("🚀 Enviando con EmailJS...");
+          // Verificación de EmailJS
+          if (!emailjs || typeof emailjs.send !== "function") {
+            status.className = "error";
+            status.innerHTML = "❌ Error interno: EmailJS no disponible.";
+            console.error("❌ EmailJS no está cargado correctamente.");
+            return;
+          }
+
+          // Envío del mensaje
+          status.className = "pending";
+          status.innerHTML = "⏳ Enviando mensaje...";
+
           emailjs
             .send("service_n73sae3", "template_0xkivdo", {
-              name: name,
-              email: email,
-              plan: plan,
-              message: message,
+              name,
+              email,
+              plan,
+              message,
             })
             .then(
               function (response) {
-                console.log("✅ Respuesta de EmailJS:", response);
+                console.log("✅ EmailJS respuesta:", response);
                 status.className = "success";
-                status.innerHTML =
-                  "✅ Tu mensaje ha sido enviado correctamente.";
-                document.getElementById("contact-form").reset();
+                status.innerHTML = "✅ Mensaje enviado correctamente.";
+                form.reset();
               },
               function (error) {
-                console.error("❌ Error al enviar con EmailJS:", error);
+                console.error("❌ Error al enviar:", error);
                 status.className = "error";
                 status.innerHTML =
-                  "❌ Error al enviar el mensaje. Revisa la consola.";
+                  "❌ Error al enviar el mensaje. Intenta más tarde.";
               }
             );
         });
+      });
     </script>
   </body>
 </html>

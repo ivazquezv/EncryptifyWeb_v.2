@@ -1,31 +1,34 @@
-// main.js - tema + año + menú hamburguesa accesible
+// main.js — Tema, año dinámico, menú accesible y robustez general
 document.addEventListener("DOMContentLoaded", () => {
   /* -------------------------
      TEMA (detección y toggle)
   -------------------------- */
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (prefersDark) {
-    document.body.classList.add("dark-theme");
-  }
+  if (prefersDark) document.body.classList.add("dark-theme");
 
   const themeToggle = document.querySelector("#theme-toggle");
   if (themeToggle) {
+    themeToggle.setAttribute(
+      "aria-pressed",
+      document.body.classList.contains("dark-theme").toString()
+    );
+
     themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-theme");
+      const isDark = document.body.classList.toggle("dark-theme");
+      themeToggle.setAttribute("aria-pressed", isDark.toString());
     });
   }
 
   /* -------------------------
      AÑO ACTUAL EN FOOTER
+     Requiere: <span id="current-year"></span>
   -------------------------- */
   const yearSpan = document.querySelector("#current-year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
   /* -------------------------
-     MENÚ HAMBURGUESA RESPONSIVE
-     Requisitos HTML esperados:
+     MENÚ HAMBURGUESA ACCESIBLE
+     Requisitos HTML:
      - botón con id="nav-toggle"
      - nav con id="primary-nav"
      - enlaces con clase .menu-btn
@@ -33,41 +36,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.getElementById("nav-toggle");
   const primaryNav = document.getElementById("primary-nav");
 
-  if (!navToggle || !primaryNav) return;
+  if (!navToggle || !primaryNav) {
+    console.warn("⚠️ Elementos de navegación no encontrados.");
+    return;
+  }
 
-  function openNav() {
+  const openNav = () => {
     primaryNav.classList.add("open");
     navToggle.setAttribute("aria-expanded", "true");
     navToggle.setAttribute("aria-label", "Cerrar menú");
     const firstLink = primaryNav.querySelector(".menu-btn");
     if (firstLink) firstLink.focus();
     document.documentElement.style.overflow = "hidden";
-  }
+  };
 
-  function closeNav() {
+  const closeNav = () => {
     primaryNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "Abrir menú");
     navToggle.focus();
     document.documentElement.style.overflow = "";
-  }
+  };
 
-  // Toggle al pulsar el botón (evita que el click burbujee y cierre inmediatamente)
   navToggle.addEventListener("click", (e) => {
     e.stopPropagation();
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
-    if (expanded) closeNav();
-    else openNav();
+    expanded ? closeNav() : openNav();
   });
 
-  // Cerrar con Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && primaryNav.classList.contains("open")) {
       closeNav();
     }
   });
 
-  // Cerrar al hacer click fuera del panel (en mobile)
   document.addEventListener("click", (e) => {
     if (!primaryNav.classList.contains("open")) return;
     const insideNav =
@@ -75,12 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!insideNav) closeNav();
   });
 
-  // Asegura estado coherente al redimensionar
   window.addEventListener("resize", () => {
     if (window.innerWidth > 880 && primaryNav.classList.contains("open")) {
-      primaryNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-      document.documentElement.style.overflow = "";
+      closeNav();
     }
   });
 });
