@@ -167,12 +167,6 @@
           return;
         }
 
-        // Inicializar EmailJS si no se ha hecho
-        if (!emailjs._init) {
-          console.log("🔧 Inicializando EmailJS...");
-          emailjs.init("P-MYFtgGFfMP9k_Us"); // Reemplaza con tu clave pública
-        }
-
         form.addEventListener("submit", function (e) {
           e.preventDefault();
 
