@@ -634,6 +634,64 @@ section h2 {
 }
 
 /* -------------------------
+    DOWNLOAD COUNTER
+-------------------------- */
+
+.download-counter {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1.5rem 0;
+  background-color: var(--section-bg, #f5f5f5);
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.counter-box {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.counter-box i {
+  font-size: 2rem;
+  color: var(--accent-color, #2c7be5);
+  margin-bottom: 0.5rem;
+}
+
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  margin: 0.2rem 0;
+}
+.counter-box p {
+  font-size: 1rem;
+  color: #2c7be5; /* azul Encryptify */
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #222;
+  margin: 0.2rem 0;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------
    FOOTER
 -------------------------- */
 footer p {

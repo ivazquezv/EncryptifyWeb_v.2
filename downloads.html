@@ -75,6 +75,14 @@
         </p>
       </section>
 
+      <section class="download-counter">
+        <div class="counter-box">
+          <i class="fa-solid fa-chart-line"></i>
+          <div class="counter-number" id="download-count">3456</div>
+          <p>descargas realizadas</p>
+        </div>
+      </section>
+
       <section class="downloads">
         <!-- Plan Gratuito -->
         <div class="download-card">
@@ -86,7 +94,7 @@
             href="assets/downloads/Encryptify_educativo.rar"
             class="btn-download"
           >
-            <i class="fa-solid fa-file-arrow-down"></i> Descargar EnCryptify
+            <i class="fa-solid fa-file-arrow-down"></i> Descargar Encryptify
             Educativo
           </a>
         </div>
@@ -135,5 +143,28 @@
       <p>&copy; 2025 Encryptify. Desarrollado por Iván Vázquez Vidador.</p>
     </footer>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      // Simulación de incremento animado
+      document.addEventListener("DOMContentLoaded", function () {
+        const counter = document.getElementById("download-count");
+        const start = 3420;
+        const end = 3456;
+        const duration = 1500;
+        const steps = end - start;
+        const increment = Math.ceil(duration / steps);
+        let current = start;
+
+        const updateCounter = () => {
+          current++;
+          counter.textContent = current.toLocaleString("es-ES");
+          if (current < end) {
+            setTimeout(updateCounter, increment);
+          }
+        };
+
+        updateCounter();
+      });
+    </script>
   </body>
 </html>
