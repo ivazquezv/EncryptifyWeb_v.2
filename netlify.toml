@@ -1,4 +1,8 @@
 [build]
   publish = "."
 
-
+# Update the CSP hashes when inline scripts change in downloads.html, contact.html.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "script-src 'self' https://cdn.jsdelivr.net 'sha256-FcG/ltY8nExADKpp1s4YwWqRjIKGi1X5Zp4ZaDIl9oM=' 'sha256-OWOBIUI9duxD3/fKAmb6eI1dCC6jWeCuS55MRLADU4E=' 'sha256-sKyzeg07PPlK7LeYnEQd6Ht1qI8mtrhvpU+aZjj8pVU='"
